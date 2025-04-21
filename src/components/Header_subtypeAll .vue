@@ -9,24 +9,28 @@
           <nav v-if="!isMobile" class="hd_menu">
             <ul
               @mouseenter="showAllSubMenu = true"
-              @mouseleave="showAllSubMenu = false">
+              @mouseleave="showAllSubMenu = false"
+            >
               <li v-for="(item, index) in menuItems" :key="index">
                 <router-link
                   v-if="!item.sub"
                   :to="item.to"
-                  :class="{ mainMenu: item.label === '예약도' }">
+                  :class="{ mainMenu: item.label === '예약도' }"
+                >
                   <span class="menu-label">{{ item.label }}</span>
                 </router-link>
                 <a
                   v-else
                   href="#"
-                  :class="{ mainMenu: item.label === '예약도' }">
+                  :class="{ mainMenu: item.label === '예약도' }"
+                >
                   {{ item.label }}
                 </a>
                 <ul
                   v-if="item.sub"
                   class="subMenu"
-                  :class="{ show: showAllSubMenu }">
+                  :class="{ show: showAllSubMenu }"
+                >
                   <li v-for="(sub, idx) in item.sub" :key="idx">
                     <router-link :to="sub.to">{{ sub.label }}</router-link>
                   </li>
@@ -72,7 +76,8 @@
           :class="{ show: shortMenu, leave: isLeaving }"
           v-show="shortMenu"
           @mouseleave="handleMouseLeave"
-          @mouseenter="clearLeave">
+          @mouseenter="clearLeave"
+        >
           <span @click.prevent="closeMobileMenu" role="button">X</span>
           <ul>
             <li v-for="(item, index) in menuItems" :key="index">
@@ -84,9 +89,7 @@
                 <a href="#" @click.prevent="toggleMobileSub(index)">
                   {{ item.label }}
                 </a>
-                <ul
-                  v-if="openedMobileMenu === index"
-                  class="subMenu show">
+                <ul v-if="openedMobileMenu === index" class="subMenu show">
                   <li v-for="(sub, idx) in item.sub" :key="idx">
                     <router-link :to="sub.to">{{ sub.label }}</router-link>
                   </li>
@@ -97,7 +100,7 @@
         </div>
       </div>
     </div>
-    <div   :class="{ show: showAllSubMenu }"  class="hd_subMenubg"  ></div>
+    <div :class="{ show: showAllSubMenu }" class="hd_subMenubg"></div>
   </header>
 </template>
 
@@ -247,7 +250,7 @@ header .inner {
 }
 .hd_wideMenu {
   width: 100%;
-  height: 100%;
+
   display: flex;
   justify-content: space-between;
 }
@@ -321,7 +324,7 @@ body.modal-open {
             align-items: center; // 수직 가운데 정렬
             justify-content: center;
             width: 100%;
-            height: 40px;
+            // height: 40px;
             padding: 0;
             padding-top: 0;
           }
@@ -511,7 +514,7 @@ body.modal-open {
   left: 0;
   width: 100%;
   height: 100px;
-  background-color: rgba(255,255,255,.8);
+  background-color: rgba(255, 255, 255, 0.8);
   z-index: 8;
   opacity: 0;
   transition: opacity 0.3s ease;
